@@ -1,11 +1,14 @@
 {% extends 'portfolio/base.html' %}
 {% block body %}
 
-        {% for stock in stocks %}
+
+        {% for company in object_list %}
 {#        listview stores everything in object_list, which we renamed.#}
 {#        <div class = 'col-sm-4 col-lg-2'>#}
-        ({ stock }}
+
+            <a href = "#">{{ company.ticker }}</a>
 {#        </div>#}
+
 
 
         {% endfor %}
