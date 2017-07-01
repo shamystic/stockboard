@@ -4,10 +4,14 @@
 
         {% for company in object_list %}
 {#        listview stores everything in object_list, which we renamed.#}
-{#        <div class = 'col-sm-4 col-lg-2'>#}
+       <div class = 'col-sm-4 col-lg-2' style = "font-family: 'Roboto'; font-size: 20px;;">
 
-            <a href = "#">{{ company.ticker }}</a>
-{#        </div>#}
+            <a href = "{% url 'portfolio:detail' company.id %}">{{ company.ticker }}</a>
+            {% for stock in company.stock_set.all %}
+            <li>${{ stock.price_paid }} - {{ stock.quantity }}</li>
+            {% endfor %}
+
+        </div>
 
 
 

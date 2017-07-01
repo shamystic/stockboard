@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 
@@ -9,10 +10,10 @@ class Company(models.Model):
     def __str__(self):  # gives string representation of the object!
         return self.ticker
 
+    def get_absolute_url(self):
+        return reverse('company:detail', kwargs = {'pk' : self.pk})
+
 class Stock(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     price_paid = models.FloatField()
     quantity = models.FloatField()
-
-    def __str__(self):
-        return self.company
