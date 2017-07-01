@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from . import views
 
+
 app_name = 'portfolio'
 
 urlpatterns = [
@@ -8,7 +9,7 @@ urlpatterns = [
 
     url(r'company/add/$', views.CompanyCreate.as_view(), name = "company-add"),
 
-    url(r'company/add-stock/$', views.StockCreate.as_view(), name = "stock-add"),
+    url(r'company/add-stock/$', views.StockCreate.as_view(success_url="/"), name = "stock-add"),
 
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name = 'detail'),
 

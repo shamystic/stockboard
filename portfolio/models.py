@@ -20,3 +20,6 @@ class Stock(models.Model):
 
     def __str__(self):  # gives string representation of the object!
         return self.price_paid + '-' + self.quantity
+
+    def get_absolute_url(self, company):
+        return reverse('portfolio:index')
