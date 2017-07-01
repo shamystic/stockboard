@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Company, Stock
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
+
 
 
 # Create your views here.
@@ -19,6 +21,10 @@ class CompanyCreate(CreateView):
     model = Company
     # attributes we need from the user
     fields = ['ticker']
+
+class CompanyDelete(DeleteView):
+    model = Company
+    success_url = reverse_lazy('portfolio:index') #redirect to here after delete
 
 class StockCreate(CreateView):
     model = Stock

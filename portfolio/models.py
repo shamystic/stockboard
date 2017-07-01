@@ -11,9 +11,12 @@ class Company(models.Model):
         return self.ticker
 
     def get_absolute_url(self):
-        return reverse('company:detail', kwargs = {'pk' : self.pk})
+        return reverse('portfolio:detail', kwargs = {'pk' : self.pk})
 
 class Stock(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     price_paid = models.FloatField()
     quantity = models.FloatField()
+
+    def __str__(self):  # gives string representation of the object!
+        return self.price_paid + '-' + self.quantity

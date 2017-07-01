@@ -11,4 +11,6 @@ urlpatterns = [
     url(r'company/add-stock/$', views.StockCreate.as_view(), name = "stock-add"),
 
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name = 'detail'),
+
+    url(r'company/(?P<pk>[0-9]+)/delete/$', views.CompanyDelete.as_view(), name = 'company-delete'),
 ]

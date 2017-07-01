@@ -7,6 +7,14 @@
        <div class = 'col-sm-4 col-lg-2' style = "font-family: 'Roboto'; font-size: 20px;;">
 
             <a href = "{% url 'portfolio:detail' company.id %}">{{ company.ticker }}</a>
+            <!-- Delete Button -->
+        <form action = "{% url 'portfolio:company-delete' company.id %}" method = 'post' style = "display: inline;">
+        {% csrf_token %}
+        <input type = "hidden" name = "company_id" value = "{{company.id}}"/>
+        <button type = "submit" class = "btn btn-default btn-sm">
+          <span class = "glyphicon glyphicon-trash"></span>
+        </button>
+      </form>
             {% for stock in company.stock_set.all %}
             <li>${{ stock.price_paid }} - {{ stock.quantity }}</li>
             {% endfor %}
