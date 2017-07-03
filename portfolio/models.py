@@ -3,6 +3,9 @@ from django.core.urlresolvers import reverse
 
 # Create your models here.
 
+class Excel(models.Model): 
+    portfolio_file = models.FileField()
+
 
 class Company(models.Model):
     ticker = models.CharField(max_length=250)
@@ -16,7 +19,7 @@ class Company(models.Model):
 class Stock(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     price_paid = models.FloatField()
-    quantity = models.FloatField()
+    quantity = models.FloatField() 
 
     def __str__(self):  # gives string representation of the object!
         return self.price_paid + '-' + self.quantity

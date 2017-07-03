@@ -1,0 +1,18 @@
+{% extends 'portfolio/base.html' %}
+{% block title %} Analytics {% endblock %}
+{% block body %}
+
+
+<h1>Analytics</h1>
+
+{% for company in object_list %}
+<ul>
+{{company}}
+    {% for stock in company.stock_set.all %}
+    <li>${{ stock.price_paid }} - {{ stock.quantity }}</li>
+    {% endfor %}
+</ul>
+{% endfor %}
+
+
+{%  endblock %}
