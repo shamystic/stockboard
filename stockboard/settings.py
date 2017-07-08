@@ -133,3 +133,8 @@ STATICFILES_DIRS = [
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+# when user uploads image, will go in new directory media
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # in our local server
+MEDIA_URL = '/media/' # relative URL

@@ -17,7 +17,7 @@ urlpatterns = [
 
     url(r'company/(?P<pk>[0-9]+)/delete/$', views.CompanyDelete.as_view(), name = 'company-delete'),
 
-    url(r'import/$', views.ExcelAdd.as_view(), name = "import"),
+    url(r'import/$', views.ExcelAdd.as_view(success_url="/analytics"), name = "import"),
 
     url(r'analytics/$', views.AnalyticView.as_view(), name = "analytics"),
 ]

@@ -1,13 +1,14 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Company, Stock, Excel
+from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 
 
 
 # Create your views here.
-class IndexView(generic.ListView):
+class IndexView(TemplateView):
     template_name = 'portfolio/index.html'
 
     def get_queryset(self):
@@ -17,7 +18,7 @@ class PortfolioView(generic.ListView):
     template_name = 'portfolio/pv.html'
 
     def get_queryset(self):
-        return Company.objects.all()
+        return Excel.objects.all()
 
 class AnalyticView(generic.ListView):
     template_name = 'portfolio/analytics.html'
@@ -31,7 +32,6 @@ class DetailView(generic.DetailView):
 
 class ExcelAdd(CreateView):
     model = Excel
-    # attributes we need from the user
     fields = ['portfolio_file']
 
 class CompanyCreate(CreateView):
@@ -41,9 +41,8 @@ class CompanyCreate(CreateView):
 
 class CompanyDelete(DeleteView):
     model = Company
-    success_url = reverse_lazy('portfolio:index') #redirect to here after delete
+    success_url = reverse_lazy('portfolio:pv') #redirect to here after delete
 
 class StockCreate(CreateView):
     model = Stock
-    # attributes we need from the user
     fields = ['company', 'price_paid', 'quantity']
