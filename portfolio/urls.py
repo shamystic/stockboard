@@ -11,7 +11,7 @@ urlpatterns = [
 
     url(r'company/add/$', views.CompanyCreate.as_view(), name = "company-add"),
 
-    url(r'company/add-stock/$', views.StockCreate.as_view(success_url="/"), name = "stock-add"),
+    url(r'company/add-stock/$', views.StockCreate.as_view(success_url="/portfolio"), name = "stock-add"),
 
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name = 'detail'),
 
