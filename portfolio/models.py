@@ -8,7 +8,7 @@ class Excel(models.Model):
 
 
 class Company(models.Model):
-    ticker = models.CharField(max_length=250)
+    ticker = models.CharField(max_length=250, unique=True)
 
     def __str__(self):  # gives string representation of the object!
         return self.ticker
